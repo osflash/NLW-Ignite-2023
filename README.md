@@ -57,7 +57,7 @@ Você pode visualizar o layout do projeto tanto para a versão web quanto para a
 
    - Instale as dependências com `npm install`
    - Inicie o expo com `npx expo start`
-     - Agora você pode acessar usando o app do [Expo](https://expo.dev/client) no seu celular .
+     - Agora você pode acessar usando o app do [Expo](https://expo.dev/client) no seu celular.
 
 > Opcional
 
