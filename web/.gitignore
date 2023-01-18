@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Custom
+.prettierrc.cjs
+.eslintrc.js
