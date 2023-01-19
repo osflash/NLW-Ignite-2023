@@ -26,6 +26,7 @@ Esse projeto foi desenvolvido utilizando as seguintes tecnologias:
 - [Prisma](https://www.prisma.io/)
 - [React](https://reactjs.org)
 - [React Native](https://reactnative.dev/)
+- [Tailwind](https://tailwindcss.com/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Vite](https://vitejs.dev/)
 
