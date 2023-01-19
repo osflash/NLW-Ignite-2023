@@ -24,12 +24,18 @@ export const SummaryTable: React.FC = () => {
 
       <div className="grid grid-rows-7 grid-flow-col gap-3">
         {summaryDates.map(date => {
-          return <HabitDay key={date.toString()} />
+          return (
+            <HabitDay
+              key={date.toString()}
+              amount={5}
+              completed={Math.round(Math.random() * 5)}
+            />
+          )
         })}
 
         {amountOfDaysToFill > 0 &&
           Array.from({ length: amountOfDaysToFill }).map((_, i) => {
-            return <HabitDay key={i} placehold />
+            return <HabitDay key={i} amount={0} completed={0} placehold />
           })}
       </div>
     </div>

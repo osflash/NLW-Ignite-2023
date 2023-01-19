@@ -1,7 +1,11 @@
 import classNames from "classnames";
-import { Dimensions, TouchableOpacity } from "react-native";
+import {
+  Dimensions,
+  TouchableOpacity,
+  TouchableOpacityProps,
+} from "react-native";
 
-interface HabitDayProps {
+interface HabitDayProps extends TouchableOpacityProps {
   placehold?: boolean;
 }
 
@@ -12,7 +16,7 @@ export const dayMarginBetween = 8;
 export const daySize =
   Dimensions.get("screen").width / weekDays - (screenHorizontalpadding + 5);
 
-export const HabitDay: React.FC<HabitDayProps> = ({ placehold }) => {
+export const HabitDay: React.FC<HabitDayProps> = ({ placehold, ...rest }) => {
   const cx = classNames("bg-zinc-900 rounded-lg border-2 m-1 border-zinc-800", {
     "opacity-40": placehold,
   });
@@ -23,6 +27,7 @@ export const HabitDay: React.FC<HabitDayProps> = ({ placehold }) => {
       style={{ width: daySize, height: daySize }}
       activeOpacity={0.7}
       disabled={placehold}
+      {...rest}
     />
   );
 };

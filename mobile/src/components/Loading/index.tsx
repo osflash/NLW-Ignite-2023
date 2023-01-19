@@ -1,6 +1,6 @@
 import { View, Text, ActivityIndicator } from "react-native";
 
-const Loading = () => {
+const Loading: React.FC = () => {
   return (
     <View
       style={{

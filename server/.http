@@ -6,12 +6,22 @@ Content-Type: application/json
 
 {
   "title": "Exemplo de hábito",
-  "weekDays": [0, 1, 3]
+  "weekDays": [0, 1, 2]
 }
 
 ###
 
 # @name GetHabit
-GET {{baseUrl}}/day?date=2023-01-02T14:00:00.000z
+GET {{baseUrl}}/day?date=2023-01-18T03:00:00.000z
+
+###
+
+# @name GetSummary
+GET {{baseUrl}}/summary
+
+###
+
+# @name ToggleHabit
+PATCH  {{baseUrl}}/habits/fa1a1bcf-3d87-4626-8c0d-d7fd1255ac00/toggle
 
 ###
