@@ -12,7 +12,7 @@ Content-Type: application/json
 ###
 
 # @name GetHabit
-GET {{baseUrl}}/day?date=2023-01-18T03:00:00.000z
+GET {{baseUrl}}/day?date=2023-01-19T03:00:00.000z
 
 ###
 
@@ -22,6 +22,6 @@ GET {{baseUrl}}/summary
 ###
 
 # @name ToggleHabit
-PATCH  {{baseUrl}}/habits/fa1a1bcf-3d87-4626-8c0d-d7fd1255ac00/toggle
+PATCH  {{baseUrl}}/habits/223e1a3f-27d6-4b9b-8db0-544f15cf52af/toggle
 
 ###

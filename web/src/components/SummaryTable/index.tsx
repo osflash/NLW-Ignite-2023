@@ -1,3 +1,7 @@
+import dayjs from 'dayjs'
+import { useEffect, useState } from 'react'
+import { z } from 'zod'
+import { api } from '../../services/axios'
 import { generateDatesFromYearBeginning } from '../../utils'
 import { HabitDay } from '../HabitDay'
 
@@ -8,7 +12,25 @@ const summaryDates = generateDatesFromYearBeginning()
 const minimumSummaryDatesSize = 18 * 7 // 18 weeks
 const amountOfDaysToFill = minimumSummaryDatesSize - summaryDates.length
 
+const summarySchema = z
+  .object({
+    id: z.string(),
+    date: z.date(),
+    amount: z.number(),
+    completed: z.number()
+  })
+  .array()
+
+type SummaryInput = z.input<typeof summarySchema>
+type SummaryOutput = z.output<typeof summarySchema>
+
 export const SummaryTable: React.FC = () => {
+  const [summary, setSummary] = useState<SummaryInput | null>([])
+
+  useEffect(() => {
+    api.get('summary').then(response => setSummary(response.data))
+  }, [])
+
   return (
     <div className="w-full flex">
       <div className="grid grid-rows-7 gap-3">
@@ -22,22 +44,29 @@ export const SummaryTable: React.FC = () => {
         ))}
       </div>
 
-      <div className="grid grid-rows-7 grid-flow-col gap-3">
-        {summaryDates.map(date => {
-          return (
-            <HabitDay
-              key={date.toString()}
-              amount={5}
-              completed={Math.round(Math.random() * 5)}
-            />
-          )
-        })}
+      {summary && (
+        <div className="grid grid-rows-7 grid-flow-col gap-3">
+          {summaryDates.map(date => {
+            const dayInSummary = summary.find(day => {
+              return dayjs(date).isSame(day.date) // fix
+            })
 
-        {amountOfDaysToFill > 0 &&
-          Array.from({ length: amountOfDaysToFill }).map((_, i) => {
-            return <HabitDay key={i} amount={0} completed={0} placehold />
+            return (
+              <HabitDay
+                key={date.toString()}
+                date={date}
+                amount={dayInSummary?.amount}
+                completed={dayInSummary?.completed}
+              />
+            )
           })}
-      </div>
+
+          {amountOfDaysToFill > 0 &&
+            Array.from({ length: amountOfDaysToFill }).map((_, i) => {
+              return <HabitDay key={i} placeholder />
+            })}
+        </div>
+      )}
     </div>
   )
 }

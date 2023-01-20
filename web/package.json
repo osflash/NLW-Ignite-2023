@@ -9,11 +9,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@radix-ui/react-checkbox": "^1.0.1",
     "@radix-ui/react-dialog": "^1.0.2",
     "@radix-ui/react-popover": "^1.0.3",
     "@radix-ui/react-progress": "^1.0.1",
     "@typescript-eslint/eslint-plugin": "^5.48.2",
     "@typescript-eslint/parser": "^5.48.2",
+    "axios": "^1.2.3",
     "classnames": "^2.3.2",
     "dayjs": "^1.11.7",
     "eslint": "^8.32.0",
