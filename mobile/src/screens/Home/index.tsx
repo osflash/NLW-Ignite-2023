@@ -1,6 +1,6 @@
-import { useNavigation } from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import dayjs from "dayjs";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Text, View, ScrollView, Alert } from "react-native";
 import { z } from "zod";
 
@@ -27,27 +27,28 @@ const summarySchema = z
   .array();
 
 type SummaryInput = z.input<typeof summarySchema>;
-type SummaryOutput = z.output<typeof summarySchema>;
 
 export const Home: React.FC = () => {
   const [loading, setLoading] = useState(true);
-  const [summary, setSummary] = useState<SummaryInput | null>([]);
+  const [summary, setSummary] = useState<SummaryInput>([]);
 
   const { navigate } = useNavigation();
 
-  useEffect(() => {
-    setLoading(true);
+  useFocusEffect(
+    useCallback(() => {
+      setLoading(true);
 
-    api
-      .get("summary")
-      .then((response) => setSummary(response.data))
-      .catch((err) => {
-        Alert.alert("Ops", "Não foi possível carregar o sumário de hábitos.");
+      api
+        .get("summary")
+        .then((response) => setSummary(response.data))
+        .catch((err) => {
+          Alert.alert("Ops", "Não foi possível carregar o sumário de hábitos.");
 
-        console.error(err);
-      })
-      .finally(() => setLoading(false));
-  }, []);
+          console.error(err);
+        })
+        .finally(() => setLoading(false));
+    }, [])
+  );
 
   if (loading) {
     return <Loading />;
@@ -87,7 +88,11 @@ export const Home: React.FC = () => {
                   amount={dayInSummary?.amount}
                   completed={dayInSummary?.completed}
                   onPress={() =>
-                    navigate("habit", { date: date.toISOString() })
+                    navigate("habit", {
+                      date: date.toISOString(),
+                      amount: dayInSummary?.amount,
+                      defaultCompleted: dayInSummary?.completed,
+                    })
                   }
                 />
               );

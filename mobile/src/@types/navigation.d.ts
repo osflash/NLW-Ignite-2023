@@ -7,7 +7,7 @@ import type {
 export type RootStackParamList = {
   home: undefined;
   new: undefined;
-  habit: { date: string };
+  habit: { date: string; amount?: number; defaultCompleted?: number };
 };
 
 export type HabitScreenRouteProp = RouteProp<RootStackParamList, "habit">;

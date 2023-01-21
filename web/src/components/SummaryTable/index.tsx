@@ -22,10 +22,9 @@ const summarySchema = z
   .array()
 
 type SummaryInput = z.input<typeof summarySchema>
-type SummaryOutput = z.output<typeof summarySchema>
 
 export const SummaryTable: React.FC = () => {
-  const [summary, setSummary] = useState<SummaryInput | null>([])
+  const [summary, setSummary] = useState<SummaryInput>([])
 
   useEffect(() => {
     api.get('summary').then(response => setSummary(response.data))
@@ -44,29 +43,28 @@ export const SummaryTable: React.FC = () => {
         ))}
       </div>
 
-      {summary && (
-        <div className="grid grid-rows-7 grid-flow-col gap-3">
-          {summaryDates.map(date => {
+      <div className="grid grid-rows-7 grid-flow-col gap-3">
+        {summary.length > 0 &&
+          summaryDates.map(date => {
             const dayInSummary = summary.find(day => {
               return dayjs(date).isSame(day.date) // fix
             })
 
             return (
               <HabitDay
-                key={date.toString()}
+                key={date.toISOString()}
                 date={date}
                 amount={dayInSummary?.amount}
-                completed={dayInSummary?.completed}
+                defaultCompleted={dayInSummary?.completed}
               />
             )
           })}
 
-          {amountOfDaysToFill > 0 &&
-            Array.from({ length: amountOfDaysToFill }).map((_, i) => {
-              return <HabitDay key={i} placeholder />
-            })}
-        </div>
-      )}
+        {amountOfDaysToFill > 0 &&
+          Array.from({ length: amountOfDaysToFill }).map((_, i) => {
+            return <HabitDay key={i} placeholder />
+          })}
+      </div>
     </div>
   )
 }
