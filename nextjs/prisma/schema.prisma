@@ -1,0 +1,113 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String    @id @default(cuid())
+  name           String?
+  email          String?   @unique
+  emailVerified  DateTime?
+  image          String?
+  accounts       Account[]
+  sessions       Session[]
+  habits         Habit[]
+  days           Day[]
+  createdAt      DateTime  @default(now())
+  usageUpdatedAt DateTime  @default(now())
+
+  @@map(name: "users")
+}
+
+model Account {
+  id                       String  @id @default(cuid())
+  userId                   String
+  type                     String
+  provider                 String
+  providerAccountId        String
+  refresh_token            String?
+  access_token             String?
+  expires_at               Int?
+  token_type               String?
+  refresh_token_expires_in Int?
+  scope                    String?
+  id_token                 String?
+  session_state            String?
+  user                     User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verificationtokens")
+}
+
+model Habit {
+  id         String   @id @default(uuid())
+  title      String
+  created_at DateTime
+  user_id    String
+
+  dayHabits DayHabit[]
+  weekDays  HabitWeekDays[]
+  user      User            @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  @@map("habits")
+}
+
+model HabitWeekDays {
+  id       String @id @default(uuid())
+  habit_id String
+  week_day Int
+
+  habit Habit @relation(fields: [habit_id], references: [id], onDelete: Cascade)
+
+  @@unique([habit_id, week_day])
+  @@map("habit_week_days")
+}
+
+model Day {
+  id      String   @id @default(uuid())
+  date    DateTime
+  user_id String
+
+  dayHabits DayHabit[]
+
+  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  @@unique([date, user_id])
+  @@map("days")
+}
+
+model DayHabit {
+  id String @id @default(uuid())
+
+  day_id   String
+  habit_id String
+
+  day   Day   @relation(fields: [day_id], references: [id], onDelete: Cascade)
+  habit Habit @relation(fields: [habit_id], references: [id], onDelete: Cascade)
+
+  @@unique([day_id, habit_id])
+  @@map("day_habits")
+}
