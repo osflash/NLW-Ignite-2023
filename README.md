@@ -29,10 +29,13 @@ Esse projeto foi desenvolvido utilizando as seguintes tecnologias:
 - [Tailwind](https://tailwindcss.com/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Vite](https://vitejs.dev/)
+- [NextAuth.js](https://next-auth.js.org/)
 
 ## 💻 Projeto
 
 O Habits é um aplicativo que ajuda os usuários a registrar e acompanhar suas metas e resoluções diariamente. Ele permite que os usuários adicionem metas e resoluções desejadas, registrem sua realização diariamente e acompanhem sua evolução através de gráficos ao longo do tempo.
+
+- No meu Projeto NLW Ignite, implementei uma solução de **autenticação** utilizando as tecnologias `prisma` e `next-auth`. Além disso, adicionei a funcionalidade de **compartilhamento de links**, permitindo que os usuários compartilhem seus hábitos com outras pessoas.
 
 ## 🔖 Layout
 
