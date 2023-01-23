@@ -1,5 +1,7 @@
+![Capa](.github/cover.png)
+
 <h1 align="center">
-  Next Level Week (NLW) Ignite 2023
+  Next Level Week Ignite - 2023
 </h1>
 
 <p align="center">
@@ -15,6 +17,7 @@
 <p align="center">
   <a href="./server">Server</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="./web">Web</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="./nextjs">Next.js</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="./mobile">Mobile</a>
 </p>
 
@@ -23,13 +26,16 @@
 Esse projeto foi desenvolvido utilizando as seguintes tecnologias:
 
 - [Fastify](https://www.fastify.io/)
+- [NextAuth.js](https://next-auth.js.org/)
+- [Next.js](https://nextjs.org/)
+- [Planetscale](https://planetscale.com/)
 - [Prisma](https://www.prisma.io/)
 - [React](https://reactjs.org)
 - [React Native](https://reactnative.dev/)
 - [Tailwind](https://tailwindcss.com/)
 - [TypeScript](https://www.typescriptlang.org/)
+- [Vercel](https://vercel.com/)
 - [Vite](https://vitejs.dev/)
-- [NextAuth.js](https://next-auth.js.org/)
 
 ## 💻 Projeto
 
@@ -40,6 +46,14 @@ O Habits é um aplicativo que ajuda os usuários a registrar e acompanhar suas m
 ## 🔖 Layout
 
 Você pode visualizar o layout do projeto tanto para a versão web quanto para a versão mobile através [desse link](https://www.figma.com/community/file/1195326661124171197). É necessário ter conta no [Figma](http://figma.com/) para acessá-lo.
+
+### Versão Web e Mobile
+
+![Preview](.github/image.png)
+
+### Versão NextJS com Autenticação
+
+![Preview](.github/print.png)
 
 ## 🚀 Como executar
 
@@ -74,4 +88,4 @@ Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para
 
 ---
 
-Feito com ♥️ by OsFlash 🚀
+<p align="center">Feito com ♥️ by OsFlash 🚀</p>
