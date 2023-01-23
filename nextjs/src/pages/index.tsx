@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import OneSignal from 'react-onesignal'
 
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
@@ -19,29 +18,6 @@ const Home: React.FC = () => {
 
     router.push(`?user=${user}`)
   }, [queryUser, router, user])
-
-  useEffect(() => {
-    const runOneSignal = async () => {
-      OneSignal.init({
-        appId: process.env.NEXT_PUBLIC_ONESIGNAL!,
-        allowLocalhostAsSecureOrigin: true
-      })
-
-      await OneSignal.showSlidedownPrompt()
-
-      OneSignal.isPushNotificationsEnabled(action => {
-        console.log(action)
-      })
-
-      OneSignal.on('subscriptionChange', isSubscribed => {
-        console.log('O estado da assinatura do usuário agora é:', isSubscribed)
-      })
-
-      OneSignal.on('permissionPromptDisplay', () => {})
-    }
-
-    runOneSignal()
-  }, [])
 
   return (
     <div className="w-screen h-screen flex justify-center items-center">

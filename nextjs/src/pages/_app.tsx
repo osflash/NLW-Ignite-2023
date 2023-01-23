@@ -40,7 +40,6 @@ const App: React.FC<MyAppProps> = ({ Component, pageProps, session }) => {
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </Head>
 
-      <Script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" />
       <Providers session={session}>
         <Component {...pageProps} />
       </Providers>
