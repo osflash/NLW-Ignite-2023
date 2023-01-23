@@ -22,6 +22,8 @@ handler.get(async (req, res) => {
     user: z.string()
   })
 
+  console.log(process.env.DATABASE_URL_BACKUP)
+
   const { user } = getDayParams.parse(req.query)
   /*
   const summary = await prisma.$queryRaw`
