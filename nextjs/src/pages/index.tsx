@@ -8,15 +8,19 @@ import { Header } from '~/components/Header'
 import { SummaryTable } from '~/components/SummaryTable'
 
 const Home: React.FC = () => {
-  const session = useSession()
+  const { data: session } = useSession()
   const router = useRouter()
-  const userId = session.data?.user.id
+
+  const user = session?.user.id
+  const queryUser = router.query['user']
+
+  // http://localhost:3000/?user=cld8icsth0000mf0913bc2gtu
 
   useEffect(() => {
-    if (!router.query['user'] && userId !== undefined) {
-      router.push(`?user=${userId}`)
-    }
-  }, [router, userId])
+    if (!user || !router.isReady || queryUser) return
+
+    router.push(`?user=${user}`)
+  }, [queryUser, router, user])
 
   return (
     <>
