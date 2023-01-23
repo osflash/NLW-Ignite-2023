@@ -36,7 +36,7 @@ export const SummaryTable: React.FC = () => {
   const userId = router.query['user']
 
   useEffect(() => {
-    if (status === 'authenticated' && userId !== undefined) {
+    if (userId !== undefined) {
       fetch(`api/summary?user=${userId}`)
         .then(res => res.json())
         .then(data => setSummary(data))

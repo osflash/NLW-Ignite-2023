@@ -4,7 +4,6 @@ import nc from 'next-connect'
 import { z } from 'zod'
 
 import { onError } from '~/erros/onError'
-import { userAuth } from '~/middlewares/userAuth'
 import { prisma } from '~/services/prisma'
 
 const getSummary = z
@@ -17,8 +16,6 @@ const getSummary = z
   .array()
 
 const handler = nc<NextApiRequest, NextApiResponse>({ onError })
-
-handler.use(userAuth)
 
 handler.get(async (req, res) => {
   const getDayParams = z.object({
