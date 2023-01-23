@@ -28,6 +28,7 @@ Esse projeto foi desenvolvido utilizando as seguintes tecnologias:
 - [Fastify](https://www.fastify.io/)
 - [NextAuth.js](https://next-auth.js.org/)
 - [Next.js](https://nextjs.org/)
+- [next-pwa](https://www.npmjs.com/package/next-pwa/)
 - [Planetscale](https://planetscale.com/)
 - [Prisma](https://www.prisma.io/)
 - [React](https://reactjs.org)
@@ -36,6 +37,7 @@ Esse projeto foi desenvolvido utilizando as seguintes tecnologias:
 - [TypeScript](https://www.typescriptlang.org/)
 - [Vercel](https://vercel.com/)
 - [Vite](https://vitejs.dev/)
+- [zod](https://zod.dev/)
 
 ## 💻 Projeto
 
