@@ -6,5 +6,5 @@ const handler = nc<NextApiRequest, NextApiResponse>()
 const message = !!process.env.DATABASE_URL_BACKUP
 
 handler.get(async (req, res) => {
-  res.status(200).send(message)
+  res.status(200).json(message)
 })
