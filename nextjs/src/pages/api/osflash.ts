@@ -8,3 +8,5 @@ const message = !!process.env.DATABASE_URL_BACKUP
 handler.get(async (req, res) => {
   res.status(200).json(message)
 })
+
+export default handler
