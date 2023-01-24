@@ -11,7 +11,7 @@ interface MyAppProps extends AppProps {
   session: Session
 }
 
-const url = process.env.VERCEL_URL!
+const url = process.env.NEXT_PUBLIC_URL || ''
 
 const App: React.FC<MyAppProps> = ({ Component, pageProps, session }) => {
   return (
