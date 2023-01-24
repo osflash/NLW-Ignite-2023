@@ -4,7 +4,6 @@ import '~/lib/dayjs'
 import { Session } from 'next-auth'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import Script from 'next/script'
 
 import Providers from '~/components/Providers'
 
@@ -37,7 +36,18 @@ const App: React.FC<MyAppProps> = ({ Component, pageProps, session }) => {
           sizes="16x16"
           href="/favicon-16x16.png"
         />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" href="/android-chrome-512x512.png" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Habit" />
+        <meta
+          property="og:description"
+          content="About
+O Habits é um aplicativo que ajuda os usuários a registrar e acompanhar suas metas e resoluções diariamente. Ele permite que os usuários adicionem metas e resoluções desejadas, registrem sua realização diariamente e acompanhem sua evolução através de gráficos ao longo do tempo."
+        />
+        <meta property="og:site_name" content="Habit - NLW Ignite 2023" />
+        <meta property="og:url" content="/" />
+        <meta property="og:image" content="/apple-touch-icon.png" />
       </Head>
 
       <Providers session={session}>
