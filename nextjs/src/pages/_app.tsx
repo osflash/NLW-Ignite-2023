@@ -42,12 +42,22 @@ const App: React.FC<MyAppProps> = ({ Component, pageProps, session }) => {
         <meta property="og:title" content="Habit" />
         <meta
           property="og:description"
-          content="About
+          content="
 O Habits é um aplicativo que ajuda os usuários a registrar e acompanhar suas metas e resoluções diariamente. Ele permite que os usuários adicionem metas e resoluções desejadas, registrem sua realização diariamente e acompanhem sua evolução através de gráficos ao longo do tempo."
         />
         <meta property="og:site_name" content="Habit - NLW Ignite 2023" />
         <meta property="og:url" content="/" />
         <meta property="og:image" content="/apple-touch-icon.png" />
+
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:url" content="/" />
+        <meta name="twitter:title" content="Habit" />
+        <meta
+          name="twitter:description"
+          content="O Habits é um aplicativo que ajuda os usuários a registrar e acompanhar suas metas e resoluções diariamente. Ele permite que os usuários adicionem metas e resoluções desejadas, registrem sua realização diariamente e acompanhem sua evolução através de gráficos ao longo do tempo."
+        />
+        <meta name="twitter:image" content="/android-chrome-512x512.png" />
+        <meta name="twitter:creator" content="@Felipe_Flash" />
       </Head>
 
       <Providers session={session}>
