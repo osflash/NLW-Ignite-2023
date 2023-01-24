@@ -11,6 +11,8 @@ interface MyAppProps extends AppProps {
   session: Session
 }
 
+const url = process.env.VERCEL_URL!
+
 const App: React.FC<MyAppProps> = ({ Component, pageProps, session }) => {
   return (
     <>
@@ -42,21 +44,26 @@ const App: React.FC<MyAppProps> = ({ Component, pageProps, session }) => {
         <meta property="og:title" content="Habit" />
         <meta
           property="og:description"
-          content="
-O Habits é um aplicativo que ajuda os usuários a registrar e acompanhar suas metas e resoluções diariamente. Ele permite que os usuários adicionem metas e resoluções desejadas, registrem sua realização diariamente e acompanhem sua evolução através de gráficos ao longo do tempo."
+          content="O Habits é um aplicativo que ajuda os usuários a registrar e acompanhar suas metas e resoluções diariamente."
         />
         <meta property="og:site_name" content="Habit - NLW Ignite 2023" />
-        <meta property="og:url" content="/" />
-        <meta property="og:image" content="/apple-touch-icon.png" />
+        <meta property="og:url" content={url} />
+        <meta
+          property="og:image"
+          content={`${url}/android-chrome-512x512.png`}
+        />
 
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:url" content="/" />
+        <meta name="twitter:url" content={url} />
         <meta name="twitter:title" content="Habit" />
         <meta
           name="twitter:description"
-          content="O Habits é um aplicativo que ajuda os usuários a registrar e acompanhar suas metas e resoluções diariamente. Ele permite que os usuários adicionem metas e resoluções desejadas, registrem sua realização diariamente e acompanhem sua evolução através de gráficos ao longo do tempo."
+          content="O Habits é um aplicativo que ajuda os usuários a registrar e acompanhar suas metas e resoluções diariamente."
         />
-        <meta name="twitter:image" content="/android-chrome-512x512.png" />
+        <meta
+          name="twitter:image"
+          content={`${url}/android-chrome-512x512.png`}
+        />
         <meta name="twitter:creator" content="@Felipe_Flash" />
       </Head>
 
